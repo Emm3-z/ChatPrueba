@@ -11,7 +11,6 @@
 #define SHM_SIZE 2048
 #define END "FIN"   // palabra para terminar el chat
 
-// --- NUEVA FUNCIÓN: verificar si un ID ya está en uso ---
 int id_ya_en_uso(const char *data, const char *usuario) {
     // Si la memoria contiene el identificador, ya está en uso
     if (strstr(data, usuario) != NULL) {
@@ -54,13 +53,11 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Registrar el nuevo usuario (marcar su presencia en la memoria)
     char registro[64];
     snprintf(registro, sizeof(registro), "%s conectado.", usuario);
     strcat(data, registro);
     strcat(data, "\n");
 
-    // --- Resto de tu código original ---
     char buffer[SHM_SIZE];
     char ultimo_mensaje[SHM_SIZE] = "";
 
